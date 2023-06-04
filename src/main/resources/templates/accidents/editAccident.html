@@ -29,7 +29,7 @@
                 Редактирование инцидента
             </div>
             <div class="card-body">
-                <form th:action="@{/updateAccident}" method="POST" enctype="multipart/form-data" th:object="${accident}">
+                <form th:action="@{/update}" method="POST" enctype="multipart/form-data" th:object="${accident}">
                     <input type="hidden" name="id" th:field="*{id}">
                     <div class="mb-3">
                         <label for="name" class="form-label"><b>Название</b></label>
