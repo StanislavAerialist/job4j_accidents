@@ -13,12 +13,38 @@
 </head>
 <body>
 <div class="container-fluid p-0">
+
+    <!-- Навигационная панель -->
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <div class="container">
             <a class="navbar-brand" href="/">Автонарушители</a>
             <div th:text="${user}"></div>
         </div>
     </nav>
+
+    <!-- Таблица со списком нарушений -->
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Название происшествия</th>
+                    <th scope="col">Описание происшествия</th>
+                    <th scope="col">Адрес</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="accident : ${accidents}">
+                    <td th:text="${accident.id}"/>
+                    <td th:text="${accident.name}"/>
+                    <td th:text="${accident.text}"/>
+                    <td th:text="${accident.address}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
