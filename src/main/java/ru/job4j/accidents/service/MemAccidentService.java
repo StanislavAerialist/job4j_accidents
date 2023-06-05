@@ -5,6 +5,7 @@ import org.apache.http.annotation.ThreadSafe;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.repository.AccidentRepository;
+import ru.job4j.accidents.repository.AccidentTypeRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,9 +16,11 @@ import java.util.Optional;
 public class MemAccidentService implements AccidentService {
 
     private final AccidentRepository accidentRepository;
+    private final AccidentTypeRepository accidentTypeRepository;
 
     @Override
-    public Optional<Accident> save(Accident accident) {
+    public Optional<Accident> save(Accident accident, int typeId) {
+        accident.setType(accidentTypeRepository.findById(typeId).get());
         return Optional.of(accidentRepository.save(accident));
     }
 

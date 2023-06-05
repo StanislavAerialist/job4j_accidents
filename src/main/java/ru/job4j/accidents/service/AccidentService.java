@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AccidentService {
-    Optional<Accident> save(Accident accident);
+    Optional<Accident> save(Accident accident, int typeId);
     boolean deleteById(int id);
 
     boolean update(Accident accident);

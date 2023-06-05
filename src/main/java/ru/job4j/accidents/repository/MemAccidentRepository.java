@@ -3,8 +3,8 @@ package ru.job4j.accidents.repository;
 import org.apache.http.annotation.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
+import ru.job4j.accidents.model.AccidentType;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -18,11 +18,12 @@ public class MemAccidentRepository implements AccidentRepository {
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
     private final AtomicInteger nextId = new AtomicInteger(1);
 
+
     public MemAccidentRepository() {
-        save(new Accident(0, "Самокат и авто", "столкновение на переходе",
-                "перекресток улиц Амундсена, Бардина"));
+        save(new Accident(0, "Велосипед и Хонда", "столкновение на переходе",
+                "перекресток улиц Амундсена, Бардина", new AccidentType(3, "Машина и велосипед")));
         save(new Accident(0, "Лада и Форд", "столкновение в правой полосе",
-                "проспект Космонавтов д.47"));
+                "проспект Космонавтов д.47", new AccidentType(1, "Две машины")));
     }
 
     @Override
@@ -40,7 +41,7 @@ public class MemAccidentRepository implements AccidentRepository {
     @Override
     public boolean update(Accident accident) {
         return accidents.computeIfPresent(accident.getId(), (id, oldAccident) -> new Accident(oldAccident.getId(),
-                accident.getName(), accident.getText(), accident.getAddress())) != null;
+                accident.getName(), accident.getText(), accident.getAddress(), accident.getType())) != null;
     }
 
     @Override

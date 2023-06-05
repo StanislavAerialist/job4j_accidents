@@ -9,20 +9,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.service.AccidentService;
+import ru.job4j.accidents.service.AccidentTypeService;
 
 @Controller
 @AllArgsConstructor
 public class AccidentController {
     private final AccidentService accidents;
+    private final AccidentTypeService accidentTypeService;
 
     @GetMapping("/addAccident")
-    public String viewCreateAccident() {
+    public String viewCreateAccident(Model model) {
+        model.addAttribute("types", accidentTypeService.findAll());
         return "accidents/createAccident";
     }
 
     @PostMapping("/saveAccident")
-    public String save(@ModelAttribute Accident accident) {
-        accidents.save(accident);
+    public String save(@ModelAttribute Accident accident, @RequestParam("type.id") int id) {
+        accidents.save(accident, id);
         return "redirect:/";
     }
 
