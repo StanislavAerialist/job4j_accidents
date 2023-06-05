@@ -28,6 +28,11 @@ public class AccidentController {
 
     @GetMapping("/formUpdateAccident")
     public String update(@RequestParam("id") int id, Model model) {
+        var accidentOptional = accidents.findById(id);
+        if (accidentOptional.isEmpty()) {
+            model.addAttribute("message", "Инцидент не найден");
+            return "errors/404";
+        }
         model.addAttribute("accident", accidents.findById(id).get());
         return "accidents/editAccident";
     }
