@@ -8,7 +8,9 @@ import ru.job4j.accidents.model.Rule;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 @ThreadSafe
 @Repository
@@ -29,5 +31,13 @@ public class MemRuleRepository implements RuleRepository {
     @Override
     public List<Rule> findAll() {
         return rules.values().stream().toList();
+    }
+
+    public Set<Rule> filter(Set<Integer> rIds) {
+        return rIds.stream()
+                .map(this::findById)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toSet());
     }
 }
