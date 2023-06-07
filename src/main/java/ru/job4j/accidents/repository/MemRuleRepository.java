@@ -13,7 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @ThreadSafe
-@Repository
 public class MemRuleRepository implements RuleRepository {
     private final Map<Integer, Rule> rules = new ConcurrentHashMap<>();
 
@@ -33,6 +32,7 @@ public class MemRuleRepository implements RuleRepository {
         return rules.values().stream().toList();
     }
 
+    @Override
     public Set<Rule> findByIds(Set<Integer> rIds) {
         return rIds.stream()
                 .map(this::findById)

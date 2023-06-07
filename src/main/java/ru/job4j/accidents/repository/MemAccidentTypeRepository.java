@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @ThreadSafe
-@Repository
 public class MemAccidentTypeRepository implements AccidentTypeRepository {
     private final Map<Integer, AccidentType> accidentTypes = new ConcurrentHashMap<>();
 

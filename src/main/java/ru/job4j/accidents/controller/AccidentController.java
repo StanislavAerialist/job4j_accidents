@@ -3,10 +3,7 @@ package ru.job4j.accidents.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.service.AccidentService;
 import ru.job4j.accidents.service.AccidentTypeService;
@@ -54,6 +51,16 @@ public class AccidentController {
         var isUpdated = accidents.update(accident, rIds);
         if (!isUpdated) {
             model.addAttribute("message", "Ошибка обновления инцидента");
+            return "errors/404";
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(Model model, @PathVariable int id) {
+        var isDeleted = accidents.deleteById(id);
+        if (!isDeleted) {
+            model.addAttribute("message", "Ошибка удаления инцидента");
             return "errors/404";
         }
         return "redirect:/";
