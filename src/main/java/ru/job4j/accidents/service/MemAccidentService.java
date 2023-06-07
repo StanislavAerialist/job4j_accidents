@@ -24,7 +24,7 @@ public class MemAccidentService implements AccidentService {
     @Override
     public Optional<Accident> save(Accident accident, int typeId, Set<Integer> rIds) {
         accident.setType(accidentTypeRepository.findById(typeId).get());
-        accident.setRules(ruleRepository.filter(rIds));
+        accident.setRules(ruleRepository.findByIds(rIds));
         return Optional.of(accidentRepository.save(accident));
     }
 
@@ -36,7 +36,7 @@ public class MemAccidentService implements AccidentService {
     @Override
     public boolean update(Accident accident, Set<Integer> rIds) {
         accident.setType(accidentTypeRepository.findById(accident.getType().getId()).get());
-        accident.setRules(ruleRepository.filter(rIds));
+        accident.setRules(ruleRepository.findByIds(rIds));
         return accidentRepository.update(accident);
     }
 

@@ -33,7 +33,7 @@ public class MemRuleRepository implements RuleRepository {
         return rules.values().stream().toList();
     }
 
-    public Set<Rule> filter(Set<Integer> rIds) {
+    public Set<Rule> findByIds(Set<Integer> rIds) {
         return rIds.stream()
                 .map(this::findById)
                 .filter(Optional::isPresent)

@@ -10,5 +10,5 @@ public interface RuleRepository {
     Optional<Rule> findById(int id);
 
     List<Rule> findAll();
-    Set<Rule> filter(Set<Integer> rIds);
+    Set<Rule> findByIds(Set<Integer> rIds);
 }
