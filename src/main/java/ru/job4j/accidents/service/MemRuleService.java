@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@ThreadSafe
 @AllArgsConstructor
 public class MemRuleService implements RuleService {
     private final RuleRepository ruleRepository;

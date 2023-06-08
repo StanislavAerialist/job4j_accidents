@@ -9,7 +9,6 @@ import ru.job4j.accidents.util.AccidentTypeRowMapper;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 @AllArgsConstructor
 public class AccidentTypeJdbcTemplateRepository implements AccidentTypeRepository {
     private final JdbcTemplate jdbc;

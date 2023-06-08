@@ -13,7 +13,6 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
-@ThreadSafe
 @AllArgsConstructor
 public class MemAccidentService implements AccidentService {
 

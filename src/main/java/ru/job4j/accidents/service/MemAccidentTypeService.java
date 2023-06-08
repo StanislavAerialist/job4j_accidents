@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@ThreadSafe
 @AllArgsConstructor
 public class MemAccidentTypeService implements AccidentTypeService {
     private final AccidentTypeRepository accidentTypeRepository;

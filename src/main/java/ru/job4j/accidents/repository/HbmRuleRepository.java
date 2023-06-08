@@ -1,30 +1,29 @@
 package ru.job4j.accidents.repository;
 
 import lombok.AllArgsConstructor;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Rule;
-import ru.job4j.accidents.util.RuleRowMapper;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Repository
 @AllArgsConstructor
-public class RuleJdbcTemplateRepository implements RuleRepository {
-    private final JdbcTemplate jdbc;
+public class HbmRuleRepository implements RuleRepository {
+    private final CrudRepository crudRepository;
 
     @Override
-    public Optional<Rule> findById(int ruleId) {
-        Rule rule = jdbc.queryForObject("SELECT * FROM rules WHERE id = ?", new RuleRowMapper(), ruleId);
-        return Optional.ofNullable(rule);
+    public Optional<Rule> findById(int id) {
+        return crudRepository.optional(
+                "from Rule where id = :rId", Rule.class, Map.of("rId", id));
     }
 
     @Override
     public List<Rule> findAll() {
-        return jdbc.query("SELECT * FROM rules",
-                new RuleRowMapper());
+        return crudRepository.query("from Rule r ORDER BY r.id ASC", Rule.class);
     }
 
     @Override
