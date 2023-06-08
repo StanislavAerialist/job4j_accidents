@@ -1,1 +1,1 @@
-INSERT INTO rules (rule_name) VALUES ('Статья 1'), ('Статья 2'), ('Статья 3');
+INSERT INTO rules (rule_name) VALUES ('РЎС‚Р°С‚СЊСЏ 1'), ('РЎС‚Р°С‚СЊСЏ 2'), ('РЎС‚Р°С‚СЊСЏ 3');
