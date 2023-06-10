@@ -1,7 +1,6 @@
 package ru.job4j.accidents.repository;
 
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Rule;
 
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Repository
 @AllArgsConstructor
 public class HbmRuleRepository implements RuleRepository {
     private final CrudRepository crudRepository;

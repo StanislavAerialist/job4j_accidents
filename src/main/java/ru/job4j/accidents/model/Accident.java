@@ -28,7 +28,7 @@ public class Accident {
     @JoinColumn(name = "type_id", foreignKey = @ForeignKey(name = "TYPES_ID_FKEY"))
     private AccidentType type;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(name = "accidents_rules", joinColumns = {
             @JoinColumn(name = "accident_id", nullable = false, updatable = false)},
             inverseJoinColumns = {

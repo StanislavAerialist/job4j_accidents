@@ -1,10 +1,9 @@
 package ru.job4j.accidents.service;
 
 import lombok.AllArgsConstructor;
-import org.apache.http.annotation.ThreadSafe;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Rule;
-import ru.job4j.accidents.repository.RuleRepository;
+import ru.job4j.accidents.repository.JpaRuleRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +11,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class MemRuleService implements RuleService {
-    private final RuleRepository ruleRepository;
+    private final JpaRuleRepository ruleRepository;
 
     @Override
     public Optional<Rule> findById(int id) {
@@ -21,6 +20,6 @@ public class MemRuleService implements RuleService {
 
     @Override
     public List<Rule> findAll() {
-        return ruleRepository.findAll();
+        return (List<Rule>) ruleRepository.findAll();
     }
 }

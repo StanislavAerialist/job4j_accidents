@@ -18,6 +18,6 @@ public class AccidentType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
-    @Column(name = "type_name", nullable = false, unique = true)
+    @Column(name = "type_name", nullable = false, unique = true, updatable = false)
     private String name;
 }

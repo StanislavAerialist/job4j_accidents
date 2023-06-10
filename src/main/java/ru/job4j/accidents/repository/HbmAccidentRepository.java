@@ -1,14 +1,12 @@
 package ru.job4j.accidents.repository;
 
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@Repository
 @AllArgsConstructor
 public class HbmAccidentRepository implements AccidentRepository {
     private final CrudRepository crudRepository;
