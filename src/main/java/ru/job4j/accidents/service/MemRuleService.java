@@ -20,6 +20,6 @@ public class MemRuleService implements RuleService {
 
     @Override
     public List<Rule> findAll() {
-        return (List<Rule>) ruleRepository.findAll();
+        return ruleRepository.findAll();
     }
 }

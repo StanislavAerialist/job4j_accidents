@@ -3,13 +3,11 @@ package ru.job4j.accidents.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
-import ru.job4j.accidents.model.Rule;
 import ru.job4j.accidents.repository.*;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -21,9 +19,8 @@ public class MemAccidentService implements AccidentService {
 
     @Override
     public Optional<Accident> save(Accident accident, int typeId, Set<Integer> rIds) {
-        Set<Rule> rules = findByIds(rIds);
         accident.setType(accidentTypeRepository.findById(typeId).get());
-        accident.setRules(rules);
+        accident.setRules(ruleRepository.findByIds(rIds));
         return Optional.of(accidentRepository.save(accident));
     }
 
@@ -35,9 +32,8 @@ public class MemAccidentService implements AccidentService {
 
     @Override
     public boolean update(Accident accident, Set<Integer> rIds) {
-        Set<Rule> rules = findByIds(rIds);
         accident.setType(accidentTypeRepository.findById(accident.getType().getId()).get());
-        accident.setRules(rules);
+        accident.setRules(ruleRepository.findByIds(rIds));
         accidentRepository.save(accident);
         return true;
     }
@@ -52,11 +48,4 @@ public class MemAccidentService implements AccidentService {
         return accidentRepository.findAll();
     }
 
-    private Set<Rule> findByIds(Set<Integer> rIds) {
-        return rIds.stream()
-                .map(ruleRepository::findById)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toSet());
-    }
 }
