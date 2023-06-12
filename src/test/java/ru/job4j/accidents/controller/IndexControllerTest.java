@@ -15,20 +15,20 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.accidents.Main;
 
 /*
- *  Создает контекст.
+ *  РЎРѕР·РґР°РµС‚ РєРѕРЅС‚РµРєСЃС‚.
  */
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
 public class IndexControllerTest {
     /*
-     *  Создает объект-заглушку. Мы можем отправлять в него запросы.
+     *  РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚-Р·Р°РіР»СѓС€РєСѓ. РњС‹ РјРѕР¶РµРј РѕС‚РїСЂР°РІР»СЏС‚СЊ РІ РЅРµРіРѕ Р·Р°РїСЂРѕСЃС‹.
      */
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     /*
-     *  Подставляет авторизованного пользователя в запрос.
+     *  РџРѕРґСЃС‚Р°РІР»СЏРµС‚ Р°РІС‚РѕСЂРёР·РѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ Р·Р°РїСЂРѕСЃ.
      */
     @WithMockUser
     public void shouldReturnDefaultMessage() throws Exception {
