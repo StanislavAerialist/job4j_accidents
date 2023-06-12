@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Service
 @AllArgsConstructor
-public class MemAccidentService implements AccidentService {
+public class SimpleAccidentService implements AccidentService {
 
     private final JpaAccidentRepository accidentRepository;
     private final JpaAccidentTypeRepository accidentTypeRepository;

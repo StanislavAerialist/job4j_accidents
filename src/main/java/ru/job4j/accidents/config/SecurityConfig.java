@@ -27,13 +27,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * @throws Exception
      */
 
-    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(ds)
-                .withUser(User.withUsername("user")
-                        .password(passwordEncoder.passwordEncoder().encode("123456"))
-                        .roles("USER"));
+        auth.jdbcAuthentication().dataSource(ds)
+                .usersByUsernameQuery("select username, password, enabled "
+                        + "from users "
+                        + "where username = ?")
+                .authoritiesByUsernameQuery(
+                        " select u.username, a.authority "
+                                + "from authorities as a, users as u "
+                                + "where u.username = ? and u.authority_id = a.id");
     }
 
     /*
@@ -49,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /*
                  * - ссылки, которые доступны всем.
                  */
-                .antMatchers("/login")
+                .antMatchers("/login", "/reg")
                 .permitAll()
                 /*
                  * - ссылки доступны только пользователем с ролями ADMIN, USER.

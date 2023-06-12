@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class MemRuleService implements RuleService {
+public class SimpleRuleService implements RuleService {
     private final JpaRuleRepository ruleRepository;
 
     @Override

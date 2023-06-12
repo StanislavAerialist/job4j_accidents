@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class MemAccidentTypeService implements AccidentTypeService {
+public class SimpleAccidentTypeService implements AccidentTypeService {
     private final JpaAccidentTypeRepository accidentTypeRepository;
 
     @Override
