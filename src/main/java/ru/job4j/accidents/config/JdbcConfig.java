@@ -9,16 +9,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
-/*
+
 @Configuration
-*/
 /*
  * @PropertySource говорит Spring считать файл.
  * Настройки можно получить через аннотацию @Value.
  */
-/*
 @PropertySource("classpath:db.properties")
- */
 @EnableTransactionManagement
 public class JdbcConfig {
 
