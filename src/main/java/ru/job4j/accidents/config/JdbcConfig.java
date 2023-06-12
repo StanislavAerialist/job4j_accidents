@@ -10,19 +10,25 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 
+/*
 @Configuration
+ */
 /*
  * @PropertySource говорит Spring считать файл.
  * Настройки можно получить через аннотацию @Value.
  */
+/*
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
+ */
 public class JdbcConfig {
 
     /*
      * Метод ds загружает пул соединений.
      */
+    /*
     @Bean
+     */
     public DataSource ds(@Value("${jdbc.driver}") String driver,
                          @Value("${jdbc.url}") String url,
                          @Value("${jdbc.username}") String username,
@@ -38,7 +44,9 @@ public class JdbcConfig {
     /*
      * Метод jdbc создает обертку для работы с базой.
      */
+    /*
     @Bean
+     */
     public JdbcTemplate jdbc(DataSource ds) {
         return new JdbcTemplate(ds);
     }

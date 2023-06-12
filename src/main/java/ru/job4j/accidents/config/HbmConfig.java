@@ -14,12 +14,16 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 
+/*
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
+ */
 public class HbmConfig {
 
+    /*
     @Bean
+     */
     public LocalSessionFactoryBean sessionFactory(@Value("${hibernate.dialect}") String dialect, DataSource ds) {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(ds);
@@ -30,7 +34,9 @@ public class HbmConfig {
         return sessionFactory;
     }
 
+    /*
     @Bean
+     */
     public PlatformTransactionManager htx(SessionFactory sf) {
         HibernateTransactionManager tx = new HibernateTransactionManager();
         tx.setSessionFactory(sf);
