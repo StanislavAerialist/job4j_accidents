@@ -28,4 +28,24 @@ public class LoginControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("users/login"));
     }
+
+    @Test
+    void whenGetLoginPageErrorParamNotNullThenShouldReturnLoginPageMessageError() throws Exception {
+        var errorMessage = "Username or Password is incorrect !!";
+        this.mockMvc.perform(get("/login?error=true"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("errorMessage", errorMessage))
+                .andExpect(view().name("users/login"));
+    }
+
+    @Test
+    void whenGetLoginPageLogoutParamNotNullThenShouldReturnLoginPageMessageError() throws Exception {
+        var errorMessage = "You have been successfully logged out !!";
+        this.mockMvc.perform(get("/login?logout=true"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("errorMessage", errorMessage))
+                .andExpect(view().name("users/login"));
+    }
 }
