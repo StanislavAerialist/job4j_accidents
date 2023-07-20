@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" th:href="@{/}">Инциденты</a>
-                <a class="nav-item nav-link active" th:href="@{/addAccident}">Добавить Инцидент</a>
+                <div class="col-6"><a class="btn btn-primary w-125" th:href="@{/addAccident}">Добавить </a></div>
             </div>
         </div>
     </nav>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label"><b>Логин</b></label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="ivan" required>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Введите логин" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label"><b>Пароль</b></label>

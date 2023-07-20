@@ -22,11 +22,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" th:href="@{/}">Инциденты</a>
-                <a class="nav-item nav-link active" th:href="@{/addAccident}">Добавить Инцидент</a>
+                <div class="col-6"><a class="btn btn-primary w-125" th:href="@{/addAccident}">Добавить </a></div>
             </div>
         </div>
 
         <a class="nav-link me-3" href="#" th:text="${user.username}"></a>
+        <a class="nav-link me-3" th:href="@{/logout}" >Выйти</a>
     </nav>
 
     <!-- Таблица со списком нарушений -->
