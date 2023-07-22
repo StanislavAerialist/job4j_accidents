@@ -27,7 +27,7 @@
 
 - скачать проект
 - создать базу данных: ```create database accidents;```
-- запусть Main class, расположение: ru.job4j.accidents
+- запустить Main class, расположение: ru.job4j.accidents
 - Открыть в браузере [ссылку](http://localhost:8080/)
 
 ## Взаимодействие с приложением:
